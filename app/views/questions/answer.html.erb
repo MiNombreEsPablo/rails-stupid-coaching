@@ -1,0 +1,46 @@
+<%
+def coach_answer(your_message)
+  # TODO: return coach answer to your_message
+  if your_message.capitalize == "I am going to work right now!"
+    return "Cool, see you there."
+  elsif your_message[-1] == "?"
+    return "Silly question, get dressed and go to work!"
+  else
+    return "I don't care, get dressed and go to work!"
+  end
+end
+
+def coach_answer_enhanced(your_message)
+  # TODO: return coach answer to your_message, with additional custom rules of yours!
+  if your_message == your_message.upcase
+    if your_message.capitalize == "I am going to work right now!"
+      return "I can feel your motivation! I'll see you there."
+    else
+      return "I can feel your motivation! #{coach_answer(your_message)}"
+    end
+  else
+    return coach_answer(your_message)
+  end
+end
+
+question = params[:question]
+reply = coach_answer_enhanced(question)
+%>
+
+<div class="card">
+  <div class="card-body">
+    <blockquote class="blockquote mb-0">
+      <p><%= question %></p>
+      <footer class="blockquote-footer">You</footer>
+    </blockquote>
+  </div>
+</div>
+
+<div class="card">
+  <div class="card-body" style="background-color: #fff3cd">
+    <blockquote class="blockquote mb-0">
+      <p><%= reply %></p>
+      <footer class="blockquote-footer">Your coach</footer>
+    </blockquote>
+  </div>
+</div>
